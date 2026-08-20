@@ -1,3 +1,11 @@
+## License
+
+© 2026 Raza Ahmed. All Rights Reserved.
+
+This project is proprietary. No permission is granted to copy,
+modify, distribute, or reuse this source code or design without
+prior written permission.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
