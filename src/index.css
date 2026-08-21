@@ -84,3 +84,12 @@ html[dir="rtl"] body {
 .reveal {
   animation: reveal-up 0.6s ease-out both;
 }
+
+/* Custom cursor: hide the native pointer only once our JS cursor is
+   actually active (desktop, fine pointer, motion allowed). */
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button,
+.custom-cursor-active [role="button"] {
+  cursor: none !important;
+}

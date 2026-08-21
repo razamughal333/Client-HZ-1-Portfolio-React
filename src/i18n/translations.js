@@ -61,9 +61,9 @@ export const translations = {
     skills: {
       eyebrow: "Skills & Tools",
       heading: "What I Work With",
-      softwareLabel: "Software",
-      designLabel: "Design",
-      strengthsLabel: "Strengths",
+      softwareLabel: "Software Skills",
+      designLabel: "Design Skills",
+      strengthsLabel: "Soft Skills",
     },
     experience: {
       eyebrow: "Experience",
@@ -99,6 +99,23 @@ export const translations = {
       heading: "Selected Work",
       body: "Every project below is pulled automatically from Habiba's Behance profile — new work published there appears here on its own.",
       viewAll: "View All Work",
+      viewLatest: "View Latest Work",
+      latestBadge: "Latest Work",
+      allWorkEyebrow: "Full Portfolio",
+      allWorkHeading: "All Work",
+      allWorkBody: "Every project currently published on Behance, fetched live — nothing here is hard-coded.",
+    },
+    instagram: {
+      eyebrow: "Currently Designing For",
+      heading: "Instagram Accounts",
+      body: "Habiba is actively creating social content for these accounts.",
+      viewCta: "View Instagram",
+    },
+    stats: {
+      posts: "Posts",
+      accounts: "Accounts Handling",
+      education: "IT Graduate",
+      skills: "Skills",
     },
     testimonials: {
       eyebrow: "Testimonials",
@@ -213,9 +230,9 @@ export const translations = {
     skills: {
       eyebrow: "مہارتیں اور اوزار",
       heading: "میں کن چیزوں پر کام کرتی ہوں",
-      softwareLabel: "سافٹ ویئر",
-      designLabel: "ڈیزائن",
-      strengthsLabel: "خصوصیات",
+      softwareLabel: "سافٹ ویئر مہارتیں",
+      designLabel: "ڈیزائن مہارتیں",
+      strengthsLabel: "سافٹ اسکلز",
     },
     experience: {
       eyebrow: "تجربہ",
@@ -251,6 +268,23 @@ export const translations = {
       heading: "منتخب کام",
       body: "نیچے دیا گیا ہر پروجیکٹ خودکار طور پر حبیبہ کے بیہانس پروفائل سے حاصل کیا جاتا ہے — وہاں شائع ہونے والا نیا کام خود بخود یہاں شامل ہو جاتا ہے۔",
       viewAll: "تمام کام دیکھیں",
+      viewLatest: "تازہ ترین کام دیکھیں",
+      latestBadge: "تازہ ترین کام",
+      allWorkEyebrow: "مکمل پورٹ فولیو",
+      allWorkHeading: "تمام کام",
+      allWorkBody: "بیہانس پر شائع تمام موجودہ پروجیکٹس، براہِ راست حاصل کیے گئے — یہاں کچھ بھی دستی طور پر شامل نہیں کیا گیا۔",
+    },
+    instagram: {
+      eyebrow: "فی الحال جن کے لیے ڈیزائن کر رہی ہیں",
+      heading: "انسٹاگرام اکاؤنٹس",
+      body: "حبیبہ ان اکاؤنٹس کے لیے فعال طور پر سوشل مواد تیار کر رہی ہیں۔",
+      viewCta: "انسٹاگرام دیکھیں",
+    },
+    stats: {
+      posts: "پوسٹس",
+      accounts: "اکاؤنٹس ہینڈلنگ",
+      education: "آئی ٹی گریجویٹ",
+      skills: "مہارتیں",
     },
     testimonials: {
       eyebrow: "آراء",

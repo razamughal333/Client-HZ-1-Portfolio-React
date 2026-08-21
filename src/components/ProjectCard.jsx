@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const FALLBACK_LABEL = "Preview unavailable";
 
@@ -8,12 +9,18 @@ function ProjectCard({ project, index = 0, priority = false }) {
   const plateNumber = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface)] transition-shadow duration-300 hover:shadow-[0_18px_40px_-24px_rgba(28,27,26,0.35)]">
+    <motion.article
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 240, damping: 20 }}
+      className="group relative flex flex-col overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface)] transition-shadow duration-300 hover:shadow-[0_18px_40px_-24px_rgba(28,27,26,0.35)]"
+    >
       <a
         href={project.url || undefined}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`View "${project.title}" on Behance`}
+        data-cursor="hover"
+        data-cursor-label="View"
         className="relative block aspect-[4/5] w-full overflow-hidden bg-[var(--surface-muted)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
       >
         {hasImage ? (
@@ -90,6 +97,7 @@ function ProjectCard({ project, index = 0, priority = false }) {
           href={project.url || undefined}
           target="_blank"
           rel="noopener noreferrer"
+          data-cursor="hover"
           className="mt-2 inline-flex w-fit items-center gap-1 text-sm font-medium text-[var(--accent)] underline-offset-4 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
         >
           View on Behance
@@ -106,7 +114,7 @@ function ProjectCard({ project, index = 0, priority = false }) {
           </svg>
         </a>
       </div>
-    </article>
+    </motion.article>
   );
 }
 

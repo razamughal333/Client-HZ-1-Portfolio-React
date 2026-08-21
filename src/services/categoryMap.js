@@ -13,9 +13,13 @@
 export const CATEGORY_MAP = {};
 
 /**
- * Optionally pin a specific project as the featured one instead of
- * defaulting to the newest. Set this to a Behance project URL when needed.
+ * Optionally pin specific projects as "selected/featured" instead of
+ * defaulting to the newest ones. Set Behance project URLs here, in the
+ * order you want them to appear. Leave empty to default to newest-first.
  */
+export const FEATURED_PROJECT_URLS = [];
+
+// Backward-compatible single-URL config (still honored if set).
 export const FEATURED_PROJECT_URL = null;
 
 export function applyCategoryMap(projects) {

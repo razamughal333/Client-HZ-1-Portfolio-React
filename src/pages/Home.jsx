@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import Hero from "../components/Hero";
 import About from "../components/About";
+import BehanceProjects from "../components/BehanceProjects";
 import Skills from "../components/Skills";
 import Experience from "../components/Experience";
+import InstagramAccounts from "../components/InstagramAccounts";
 import Services from "../components/Services";
-import BehanceProjects from "../components/BehanceProjects";
+import LatestWorkCTA from "../components/LatestWorkCTA";
 import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
 
@@ -13,7 +16,7 @@ function Home() {
   const location = useLocation();
 
   // Support cross-page "scroll to section" navigation (e.g. clicking a nav
-  // link while on the Know More page).
+  // link while on the Know More or All Work page).
   useEffect(() => {
     const targetId = location.state?.scrollTo;
     if (!targetId) return;
@@ -24,16 +27,23 @@ function Home() {
   }, [location.state]);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.35 }}
+    >
       <Hero />
       <About />
+      <BehanceProjects limit={3} />
       <Skills />
       <Experience />
+      <InstagramAccounts />
       <Services />
-      <BehanceProjects limit={4} />
+      <LatestWorkCTA />
       <Testimonials />
       <Contact />
-    </>
+    </motion.div>
   );
 }
 

@@ -1,8 +1,11 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "../i18n/useLanguage";
 import { CV } from "../data/cv";
 import SectionHeading from "./ui/SectionHeading";
+import StaggerContainer, { StaggerItem } from "./motion/StaggerContainer";
+import Reveal from "./motion/Reveal";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -11,25 +14,55 @@ const IS_CONFIGURED = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 function ContactDetailRow({ icon, label, value, href }) {
   return (
-    <div className="flex items-start gap-3">
-      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--accent)]">
-        {icon}
-      </span>
-      <div>
-        <p className="text-xs uppercase tracking-wide text-[var(--muted)]">{label}</p>
-        {href ? (
-          <a
-            href={href}
-            target={href.startsWith("http") ? "_blank" : undefined}
-            rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="text-sm font-medium text-[var(--ink)] hover:text-[var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-sm"
+    <StaggerItem>
+      <motion.div whileHover={{ x: 4 }} className="flex items-start gap-3">
+        <motion.span
+          whileHover={{ rotate: 8, scale: 1.08 }}
+          className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--border)] text-[var(--accent)]"
+        >
+          {icon}
+        </motion.span>
+        <div>
+          <p className="text-xs uppercase tracking-wide text-[var(--muted)]">{label}</p>
+          {href ? (
+            <a
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              data-cursor="hover"
+              className="text-sm font-medium text-[var(--ink)] hover:text-[var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded-sm"
+            >
+              {value}
+            </a>
+          ) : (
+            <p className="text-sm font-medium text-[var(--ink)]">{value}</p>
+          )}
+        </div>
+      </motion.div>
+    </StaggerItem>
+  );
+}
+
+function FormField({ id, label, error, children }) {
+  return (
+    <div>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
+        {label}
+      </label>
+      {children}
+      <AnimatePresence>
+        {error && (
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            id={`${id}-error`}
+            className="mt-1 text-xs text-red-500"
           >
-            {value}
-          </a>
-        ) : (
-          <p className="text-sm font-medium text-[var(--ink)]">{value}</p>
+            {error}
+          </motion.p>
         )}
-      </div>
+      </AnimatePresence>
     </div>
   );
 }
@@ -38,7 +71,7 @@ function Contact() {
   const { t } = useLanguage();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error | configMissing
 
   const handleChange = (field) => (e) => {
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -72,11 +105,7 @@ function Contact() {
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-        },
+        { from_name: form.name, from_email: form.email, message: form.message },
         { publicKey: PUBLIC_KEY }
       );
       setStatus("success");
@@ -86,12 +115,15 @@ function Contact() {
     }
   };
 
+  const fieldClass =
+    "w-full rounded-sm border border-[var(--border)] bg-[var(--bg)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-all duration-200 focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent-soft)]";
+
   return (
     <section id="contact" className="mx-auto max-w-6xl px-6 py-20 sm:px-8">
       <SectionHeading eyebrow={t.contact.eyebrow} heading={t.contact.heading} body={t.contact.subheading} />
 
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="flex flex-col gap-6">
+        <StaggerContainer className="flex flex-col gap-6">
           <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
             {t.contact.detailsHeading}
           </h3>
@@ -147,101 +179,113 @@ function Contact() {
               </svg>
             }
           />
-        </div>
+        </StaggerContainer>
 
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4 rounded-sm border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8">
-          <div>
-            <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
-              {t.contact.formName}
-            </label>
-            <input
-              id="contact-name"
-              type="text"
-              value={form.name}
-              onChange={handleChange("name")}
-              placeholder={t.contact.formNamePlaceholder}
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? "contact-name-error" : undefined}
-              className="w-full rounded-sm border border-[var(--border)] bg-[var(--bg)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--accent)]"
-            />
-            {errors.name && (
-              <p id="contact-name-error" className="mt-1 text-xs text-red-500">
-                {errors.name}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
-              {t.contact.formEmail}
-            </label>
-            <input
-              id="contact-email"
-              type="email"
-              value={form.email}
-              onChange={handleChange("email")}
-              placeholder={t.contact.formEmailPlaceholder}
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? "contact-email-error" : undefined}
-              className="w-full rounded-sm border border-[var(--border)] bg-[var(--bg)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--accent)]"
-            />
-            {errors.email && (
-              <p id="contact-email-error" className="mt-1 text-xs text-red-500">
-                {errors.email}
-              </p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-[var(--ink)]">
-              {t.contact.formMessage}
-            </label>
-            <textarea
-              id="contact-message"
-              rows={5}
-              value={form.message}
-              onChange={handleChange("message")}
-              placeholder={t.contact.formMessagePlaceholder}
-              aria-invalid={Boolean(errors.message)}
-              aria-describedby={errors.message ? "contact-message-error" : undefined}
-              className="w-full resize-none rounded-sm border border-[var(--border)] bg-[var(--bg)] px-4 py-2.5 text-sm text-[var(--ink)] outline-none transition-colors focus:border-[var(--accent)]"
-            />
-            {errors.message && (
-              <p id="contact-message-error" className="mt-1 text-xs text-red-500">
-                {errors.message}
-              </p>
-            )}
-          </div>
-
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
+        <Reveal delay={0.1}>
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="flex flex-col gap-4 rounded-sm border border-[var(--border)] bg-[var(--surface)] p-6 sm:p-8"
           >
-            {status === "sending" ? t.contact.sending : t.contact.send}
-          </button>
+            <FormField id="contact-name" label={t.contact.formName} error={errors.name}>
+              <input
+                id="contact-name"
+                type="text"
+                value={form.name}
+                onChange={handleChange("name")}
+                placeholder={t.contact.formNamePlaceholder}
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? "contact-name-error" : undefined}
+                className={fieldClass}
+              />
+            </FormField>
 
-          <div role="status" aria-live="polite">
-            {status === "success" && (
-              <p className="rounded-sm bg-green-50 px-4 py-2.5 text-sm text-green-700 dark:bg-green-950 dark:text-green-300">
-                {t.contact.success}
-              </p>
-            )}
-            {status === "error" && (
-              <p className="rounded-sm bg-red-50 px-4 py-2.5 text-sm text-red-600 dark:bg-red-950 dark:text-red-300">
-                {t.contact.error}
-              </p>
-            )}
-            {status === "configMissing" && (
-              <p className="rounded-sm bg-amber-50 px-4 py-2.5 text-sm text-amber-700 dark:bg-amber-950 dark:text-amber-300">
-                {t.contact.configMissing}{" "}
-                <a href={`mailto:${CV.email}`} className="underline">
-                  {CV.email}
-                </a>
-              </p>
-            )}
-          </div>
-        </form>
+            <FormField id="contact-email" label={t.contact.formEmail} error={errors.email}>
+              <input
+                id="contact-email"
+                type="email"
+                value={form.email}
+                onChange={handleChange("email")}
+                placeholder={t.contact.formEmailPlaceholder}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "contact-email-error" : undefined}
+                className={fieldClass}
+              />
+            </FormField>
+
+            <FormField id="contact-message" label={t.contact.formMessage} error={errors.message}>
+              <textarea
+                id="contact-message"
+                rows={5}
+                value={form.message}
+                onChange={handleChange("message")}
+                placeholder={t.contact.formMessagePlaceholder}
+                aria-invalid={Boolean(errors.message)}
+                aria-describedby={errors.message ? "contact-message-error" : undefined}
+                className={`${fieldClass} resize-none`}
+              />
+            </FormField>
+
+            <motion.button
+              type="submit"
+              disabled={status === "sending"}
+              data-cursor="hover"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[var(--accent-ink)] transition-opacity hover:opacity-90 disabled:opacity-60 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
+            >
+              {status === "sending" ? (
+                <motion.span
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                  className="h-3.5 w-3.5 rounded-full border-2 border-[var(--accent-ink)] border-t-transparent"
+                />
+              ) : null}
+              {status === "sending" ? t.contact.sending : t.contact.send}
+            </motion.button>
+
+            <div role="status" aria-live="polite">
+              <AnimatePresence mode="wait">
+                {status === "success" && (
+                  <motion.p
+                    key="success"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="rounded-sm bg-green-50 px-4 py-2.5 text-sm text-green-700 dark:bg-green-950 dark:text-green-300"
+                  >
+                    {t.contact.success}
+                  </motion.p>
+                )}
+                {status === "error" && (
+                  <motion.p
+                    key="error"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="rounded-sm bg-red-50 px-4 py-2.5 text-sm text-red-600 dark:bg-red-950 dark:text-red-300"
+                  >
+                    {t.contact.error}
+                  </motion.p>
+                )}
+                {status === "configMissing" && (
+                  <motion.p
+                    key="configMissing"
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="rounded-sm bg-amber-50 px-4 py-2.5 text-sm text-amber-700 dark:bg-amber-950 dark:text-amber-300"
+                  >
+                    {t.contact.configMissing}{" "}
+                    <a href={`mailto:${CV.email}`} className="underline">
+                      {CV.email}
+                    </a>
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
+          </form>
+        </Reveal>
       </div>
     </section>
   );
