@@ -62,7 +62,15 @@ function About() {
               className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-[var(--accent-ink)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
             >
               {t.about.downloadCv}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
                 <path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" />
               </svg>
             </motion.a>
@@ -73,7 +81,15 @@ function About() {
                 className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] px-5 py-2.5 text-sm font-medium text-[var(--ink)] hover:border-[var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
               >
                 {t.about.knowMore}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
                   <path d="M7 17L17 7M17 7H8M17 7v9" />
                 </svg>
               </Link>
@@ -89,12 +105,25 @@ function About() {
 
         <Reveal delay={0.1}>
           <div className="relative">
-            <div className="aspect-[4/5] w-full max-w-sm justify-self-center overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface-muted)] lg:justify-self-end">
-              <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center">
-                <span className="font-serif text-5xl text-[var(--accent)]">HZ</span>
-                <span className="text-xs uppercase tracking-[0.2em] text-[var(--muted)]">
+            <div className="relative aspect-[4/5] w-full max-w-sm justify-self-center overflow-hidden rounded-sm border border-[var(--border)] bg-[var(--surface-muted)] lg:justify-self-end">
+              {/* Light-theme image: hidden as soon as .dark is active */}
+              <img
+                src="/lighthz.png"
+                alt={`${CV.name} — ${CV.location}`}
+                className="block h-full w-full object-cover dark:hidden"
+              />
+              {/* Dark-theme image: hidden unless .dark is active */}
+              <img
+                src="/darkhz.png"
+                alt={`${CV.name} — ${CV.location}`}
+                className="hidden h-full w-full object-cover dark:block"
+              />
+              {/* HZ monogram + location caption overlaid on the photo */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent p-4">
+                <p className="font-serif text-2xl font-bold text-white">HZ</p>
+                <p className="text-xs uppercase tracking-wide text-white/80">
                   {CV.location}
-                </span>
+                </p>
               </div>
             </div>
           </div>

@@ -15,7 +15,7 @@ export const CV = {
   linkedin: "https://linkedin.com/in/habiba-zulfiqar",
   behance: "https://www.behance.net/habibazulfiqar2",
   // No confirmed Instagram URL was supplied — never invent one.
-  instagram: null,
+  instagram: "https://www.instagram.com/hxb_ahh/",
 
   software: ["Adobe Photoshop", "Adobe Illustrator"],
   designSkills: [
