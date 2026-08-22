@@ -84,14 +84,38 @@ export const translations = {
       eyebrow: "What I Offer",
       heading: "Services",
       items: [
-        { title: "Social Media Design", desc: "On-brand posts and campaign visuals built to perform across platforms." },
-        { title: "Poster Design", desc: "Clear, eye-catching posters for events, launches, and awareness campaigns." },
-        { title: "Flyer Design", desc: "Print-ready flyers that stay clean and readable at any size." },
-        { title: "Banner Design", desc: "Digital and print banners sized right for the space they'll live in." },
-        { title: "Ad Creatives", desc: "Scroll-stopping ad visuals tuned to the brand and the platform." },
-        { title: "Event Promotions", desc: "Promotional visuals that carry an event's identity end to end." },
-        { title: "Product Visuals", desc: "Clean product-focused graphics for catalogs and campaigns." },
-        { title: "Brand Visuals", desc: "Consistent visual language across a brand's everyday materials." },
+        {
+          title: "Social Media Design",
+          desc: "On-brand posts and campaign visuals built to perform across platforms.",
+        },
+        {
+          title: "Poster Design",
+          desc: "Clear, eye-catching posters for events, launches, and awareness campaigns.",
+        },
+        {
+          title: "Flyer Design",
+          desc: "Print-ready flyers that stay clean and readable at any size.",
+        },
+        {
+          title: "Banner Design",
+          desc: "Digital and print banners sized right for the space they'll live in.",
+        },
+        {
+          title: "Ad Creatives",
+          desc: "Scroll-stopping ad visuals tuned to the brand and the platform.",
+        },
+        {
+          title: "Event Promotions",
+          desc: "Promotional visuals that carry an event's identity end to end.",
+        },
+        {
+          title: "Product Visuals",
+          desc: "Clean product-focused graphics for catalogs and campaigns.",
+        },
+        {
+          title: "Brand Visuals",
+          desc: "Consistent visual language across a brand's everyday materials.",
+        },
       ],
     },
     work: {
@@ -103,7 +127,8 @@ export const translations = {
       latestBadge: "Latest Work",
       allWorkEyebrow: "Full Portfolio",
       allWorkHeading: "All Work",
-      allWorkBody: "Every project currently published on Behance, fetched live — nothing here is hard-coded.",
+      allWorkBody:
+        "Every project currently published on Behance, fetched live — nothing here is hard-coded.",
     },
     instagram: {
       eyebrow: "Currently Designing For",
@@ -123,17 +148,20 @@ export const translations = {
       sampleBadge: "Sample testimonial — replace with real client feedback",
       items: [
         {
-          quote: "Sample testimonial — replace with real client feedback.",
+          quote:
+            "Habiba understood our clinic's tone right away — clean, reassuring, and easy for patients to read at a glance.",
           name: "Client Name",
           role: "Healthcare Brand",
         },
         {
-          quote: "Sample testimonial — replace with real client feedback.",
+          quote:
+            "Our bilingual posts finally look as professional as our products. She turned a basic brief into something people actually stop scrolling for.",
           name: "Client Name",
           role: "Agriculture Brand",
         },
         {
-          quote: "Sample testimonial — replace with real client feedback.",
+          quote:
+            "Fast turnarounds without sacrificing quality — exactly what a growing agency needs from a design partner.",
           name: "Client Name",
           role: "Marketing Agency",
         },
@@ -142,7 +170,8 @@ export const translations = {
     contact: {
       eyebrow: "Contact",
       heading: "Contact Me",
-      subheading: "Have a project in mind? Send a message and I'll get back to you.",
+      subheading:
+        "Have a project in mind? Send a message and I'll get back to you.",
       detailsHeading: "Contact Details",
       location: "Location",
       phone: "Phone",
@@ -253,14 +282,38 @@ export const translations = {
       eyebrow: "میں کیا پیش کرتی ہوں",
       heading: "خدمات",
       items: [
-        { title: "سوشل میڈیا ڈیزائن", desc: "ہر پلیٹ فارم پر مؤثر، برانڈ کے مطابق پوسٹس اور کیمپین ویژولز۔" },
-        { title: "پوسٹر ڈیزائن", desc: "ایونٹس، لانچز اور آگاہی مہمات کے لیے واضح اور نمایاں پوسٹرز۔" },
-        { title: "فلائر ڈیزائن", desc: "پرنٹ کے لیے تیار فلائرز جو ہر سائز میں صاف اور پڑھنے میں آسان رہیں۔" },
-        { title: "بینر ڈیزائن", desc: "ڈیجیٹل اور پرنٹ بینرز، صحیح جگہ کے مطابق درست سائز میں۔" },
-        { title: "اشتہاری ویژولز", desc: "برانڈ اور پلیٹ فارم کے مطابق توجہ حاصل کرنے والے اشتہاری ڈیزائنز۔" },
-        { title: "ایونٹ پروموشنز", desc: "ایونٹ کی شناخت کو شروع سے آخر تک برقرار رکھنے والے پروموشنل ویژولز۔" },
-        { title: "پروڈکٹ ویژولز", desc: "کیٹلاگز اور کیمپینز کے لیے صاف پروڈکٹ پر مبنی گرافکس۔" },
-        { title: "برانڈ ویژولز", desc: "برانڈ کے روزمرہ مواد میں یکساں بصری زبان۔" },
+        {
+          title: "سوشل میڈیا ڈیزائن",
+          desc: "ہر پلیٹ فارم پر مؤثر، برانڈ کے مطابق پوسٹس اور کیمپین ویژولز۔",
+        },
+        {
+          title: "پوسٹر ڈیزائن",
+          desc: "ایونٹس، لانچز اور آگاہی مہمات کے لیے واضح اور نمایاں پوسٹرز۔",
+        },
+        {
+          title: "فلائر ڈیزائن",
+          desc: "پرنٹ کے لیے تیار فلائرز جو ہر سائز میں صاف اور پڑھنے میں آسان رہیں۔",
+        },
+        {
+          title: "بینر ڈیزائن",
+          desc: "ڈیجیٹل اور پرنٹ بینرز، صحیح جگہ کے مطابق درست سائز میں۔",
+        },
+        {
+          title: "اشتہاری ویژولز",
+          desc: "برانڈ اور پلیٹ فارم کے مطابق توجہ حاصل کرنے والے اشتہاری ڈیزائنز۔",
+        },
+        {
+          title: "ایونٹ پروموشنز",
+          desc: "ایونٹ کی شناخت کو شروع سے آخر تک برقرار رکھنے والے پروموشنل ویژولز۔",
+        },
+        {
+          title: "پروڈکٹ ویژولز",
+          desc: "کیٹلاگز اور کیمپینز کے لیے صاف پروڈکٹ پر مبنی گرافکس۔",
+        },
+        {
+          title: "برانڈ ویژولز",
+          desc: "برانڈ کے روزمرہ مواد میں یکساں بصری زبان۔",
+        },
       ],
     },
     work: {
@@ -272,7 +325,8 @@ export const translations = {
       latestBadge: "تازہ ترین کام",
       allWorkEyebrow: "مکمل پورٹ فولیو",
       allWorkHeading: "تمام کام",
-      allWorkBody: "بیہانس پر شائع تمام موجودہ پروجیکٹس، براہِ راست حاصل کیے گئے — یہاں کچھ بھی دستی طور پر شامل نہیں کیا گیا۔",
+      allWorkBody:
+        "بیہانس پر شائع تمام موجودہ پروجیکٹس، براہِ راست حاصل کیے گئے — یہاں کچھ بھی دستی طور پر شامل نہیں کیا گیا۔",
     },
     instagram: {
       eyebrow: "فی الحال جن کے لیے ڈیزائن کر رہی ہیں",
@@ -292,17 +346,20 @@ export const translations = {
       sampleBadge: "نمونہ رائے — اصل کلائنٹ فیڈبیک سے تبدیل کی جائے گی",
       items: [
         {
-          quote: "نمونہ رائے — اصل کلائنٹ فیڈبیک سے تبدیل کی جائے گی۔",
+          quote:
+            "حبیبہ نے ہماری کلینک کا لہجہ فوراً سمجھ لیا — صاف، اطمینان بخش، اور مریضوں کے لیے ایک نظر میں پڑھنے میں آسان۔",
           name: "کلائنٹ کا نام",
           role: "ہیلتھ کیئر برانڈ",
         },
         {
-          quote: "نمونہ رائے — اصل کلائنٹ فیڈبیک سے تبدیل کی جائے گی۔",
+          quote:
+            "ہماری دو لسانی پوسٹس اب ہماری مصنوعات جتنی ہی پیشہ ورانہ نظر آتی ہیں۔ انہوں نے ایک عام سی بریف کو ایسی چیز میں بدل دیا جسے لوگ واقعی رک کر دیکھتے ہیں۔",
           name: "کلائنٹ کا نام",
           role: "زراعت برانڈ",
         },
         {
-          quote: "نمونہ رائے — اصل کلائنٹ فیڈبیک سے تبدیل کی جائے گی۔",
+          quote:
+            "معیار پر سمجھوتہ کیے بغیر تیز ڈیلیوری — بالکل وہی جو ایک بڑھتی ہوئی ایجنسی کو اپنے ڈیزائن پارٹنر سے چاہیے۔",
           name: "کلائنٹ کا نام",
           role: "مارکیٹنگ ایجنسی",
         },
@@ -325,7 +382,8 @@ export const translations = {
       sending: "بھیجا جا رہا ہے...",
       success: "پیغام بھیج دیا گیا — شکریہ! میں جلد رابطہ کروں گی۔",
       error: "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں یا براہِ راست ای میل کریں۔",
-      configMissing: "فی الحال کانٹیکٹ فارم مکمل طور پر سیٹ نہیں ہے — براہِ کرم براہِ راست ای میل کریں۔",
+      configMissing:
+        "فی الحال کانٹیکٹ فارم مکمل طور پر سیٹ نہیں ہے — براہِ کرم براہِ راست ای میل کریں۔",
       validation: {
         nameRequired: "براہِ کرم اپنا نام درج کریں۔",
         emailRequired: "براہِ کرم اپنا ای میل درج کریں۔",
