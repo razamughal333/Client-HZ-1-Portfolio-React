@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Habiba Zulfiqar — Graphic Designer specializing in social media and brand visuals for healthcare, agriculture, and marketing brands." />
+    <meta
+      name="description"
+      content="Habiba Zulfiqar — Graphic Designer specializing in social media and brand visuals for healthcare, agriculture, and marketing brands."
+    />
     <link rel="stylesheet" href="/src/index.css" />
+    <!-- MADE BY RAZA AHMED MUGHAL -->
     <title>Habiba Zulfiqar — Graphic Designer</title>
     <script>
       // Set the theme class before React mounts to avoid a light/dark flash.
       (function () {
         try {
           var saved = localStorage.getItem("hz-portfolio-theme");
-          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
           var isDark = saved === "dark" || (!saved && prefersDark);
           if (isDark) document.documentElement.classList.add("dark");
         } catch (e) {}
