@@ -145,7 +145,7 @@ export const translations = {
     testimonials: {
       eyebrow: "Testimonials",
       heading: "What Clients Say",
-      sampleBadge: "Sample testimonial — replace with real client feedback",
+      sampleBadge: "★★★★★",
       items: [
         {
           quote:
