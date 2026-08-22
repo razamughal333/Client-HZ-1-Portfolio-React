@@ -83,7 +83,7 @@ function Contact() {
     if (!form.name.trim()) nextErrors.name = t.contact.validation.nameRequired;
     if (!form.email.trim()) {
       nextErrors.email = t.contact.validation.emailRequired;
-    } else if (!form.email.toLowerCase().includes("@gmail.com")) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
       nextErrors.email = t.contact.validation.emailInvalid;
     }
     if (!form.message.trim()) nextErrors.message = t.contact.validation.messageRequired;

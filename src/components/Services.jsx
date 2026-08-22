@@ -26,6 +26,14 @@ function Services() {
               </span>
               <h3 className="relative font-serif text-lg text-[var(--ink)]">{item.title}</h3>
               <p className="relative text-sm leading-relaxed text-[var(--muted)]">{item.desc}</p>
+              <motion.span
+                className="relative mt-1 inline-flex w-fit items-center gap-1 text-xs font-medium text-[var(--accent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                aria-hidden="true"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 group-hover:translate-x-1">
+                  <path d="M7 17L17 7M17 7H8M17 7v9" />
+                </svg>
+              </motion.span>
             </motion.div>
           </StaggerItem>
         ))}
